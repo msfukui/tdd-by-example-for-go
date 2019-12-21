@@ -1,5 +1,7 @@
 # TDD by Example for Go
 
+![](https://github.com/msfukui/tdd-by-example-for-go/workflows/Go%20Test/badge.svg)
+
 書籍「テスト駆動開発」を Golang で読み進めてみるレポジトリです。
 
 ## Setup
