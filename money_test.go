@@ -3,10 +3,19 @@ package money
 import "testing"
 
 func TestMultiplication(t *testing.T) {
-	var five = Dollar{5}
-	five.Times(2)
+	var five = NewDollar(5)
 
-	if x := five.amount; 10 != x {
-		t.Errorf("Dollar#time(%v) = %v, want %v", 2, x, 10)
+	var in, expected = 2, 10
+	var product = five.Times(in)
+
+	if x := product.amount; expected != x {
+		t.Errorf("Dollar#Times(%v) = %v, want %v", in, x, expected)
+	}
+
+	in, expected = 3, 15
+	product = five.Times(in)
+
+	if x := product.amount; expected != x {
+		t.Errorf("Dollar#Times(%v) = %v, want %v", in, x, expected)
 	}
 }
