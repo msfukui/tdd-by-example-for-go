@@ -16,3 +16,10 @@ func NewDollar(amount int) *Dollar {
 func (d *Dollar) Times(multiplier int) *Dollar {
 	return NewDollar(d.amount * multiplier)
 }
+
+// Equals determines that the value specified in the argument is equal to
+// the value of the receiver.
+// If they are equal, return true.
+func (d *Dollar) Equals(object *Dollar) bool {
+	return d.amount == object.amount
+}
