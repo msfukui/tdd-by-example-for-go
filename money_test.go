@@ -5,18 +5,16 @@ import "testing"
 func TestMultiplication(t *testing.T) {
 	var five = NewDollar(5)
 
-	var in, expected = 2, 10
-	var product = five.Times(in)
+	var result = five.Times(2).Equals(NewDollar(10))
 
-	if x := product.amount; expected != x {
-		t.Errorf("Dollar#Times(%v) = %v, want %v", in, x, expected)
+	if !result {
+		t.Errorf("Dollar#Times(%v) == %v is %v, want %v", 2, NewDollar(10), true, result)
 	}
 
-	in, expected = 3, 15
-	product = five.Times(in)
+	result = five.Times(3).Equals(NewDollar(15))
 
-	if x := product.amount; expected != x {
-		t.Errorf("Dollar#Times(%v) = %v, want %v", in, x, expected)
+	if !result {
+		t.Errorf("Dollar#Times(%v) == %v is %v, want %v", 3, NewDollar(15), true, result)
 	}
 }
 
@@ -26,6 +24,7 @@ func TestEquality(t *testing.T) {
 	var in = 5
 	var expected = true
 	var result = five.Equals(NewDollar(in))
+
 	if expected != result {
 		t.Errorf("Dollar(%v)#Equals(%v) = %v, want %v", 5, in, result, expected)
 	}
@@ -33,6 +32,7 @@ func TestEquality(t *testing.T) {
 	in = 6
 	expected = false
 	result = five.Equals(NewDollar(in))
+
 	if expected != result {
 		t.Errorf("Dollar(%v)#Equals(%v) = %v, want %v", 5, in, result, expected)
 	}
