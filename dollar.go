@@ -2,24 +2,21 @@ package money
 
 // Dollar struct is the difinition of a US currency unit.
 type Dollar struct {
-	amount int
+	Money
 }
 
 // NewDollar is Dollar's constructor
-func NewDollar(amount int) *Dollar {
+func NewDollar(amounter int) *Dollar {
 	c := new(Dollar)
-	c.amount = amount
+	c.amounter = amounter
 	return c
 }
 
 // Times multiplies a Dollar amount by the specified value.
 func (d *Dollar) Times(multiplier int) *Dollar {
-	return NewDollar(d.amount * multiplier)
+	return NewDollar(d.amount() * multiplier)
 }
 
-// Equals determines that the value specified in the argument is equal to
-// the value of the receiver.
-// If they are equal, return true.
-func (d *Dollar) Equals(object *Dollar) bool {
-	return d.amount == object.amount
+func (d *Dollar) amount() int {
+	return d.amounter
 }
