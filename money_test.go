@@ -36,6 +36,22 @@ func TestEquality(t *testing.T) {
 	if expected != result {
 		t.Errorf("Dollar(%v)#Equals(%v) = %v, want %v", 5, in, result, expected)
 	}
+
+	in = 5
+	expected = true
+	var resultFranc = five.Equals(NewFranc(in))
+
+	if expected != resultFranc {
+		t.Errorf("Franc(%v)#Equals(%v) = %v, want %v", 5, in, resultFranc, expected)
+	}
+
+	in = 6
+	expected = false
+	resultFranc = five.Equals(NewFranc(in))
+
+	if expected != resultFranc {
+		t.Errorf("Franc(%v)#Equals(%v) = %v, want %v", 5, in, resultFranc, expected)
+	}
 }
 
 func TestFrancMultiplication(t *testing.T) {
