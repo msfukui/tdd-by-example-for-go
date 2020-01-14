@@ -19,38 +19,34 @@ func TestMultiplication(t *testing.T) {
 }
 
 func TestEquality(t *testing.T) {
-	var five = NewDollar(5)
+	var result = NewDollar(5).Equals(NewDollar(5))
 
-	var in = 5
-	var expected = true
-	var result = five.Equals(NewDollar(in))
-
-	if expected != result {
-		t.Errorf("Dollar(%v)#Equals(%v) = %v, want %v", 5, in, result, expected)
+	if !result {
+		t.Errorf("Dollar(%v)#Equals(%v) = %v, want %v", 5, 5, result, true)
 	}
 
-	in = 6
-	expected = false
-	result = five.Equals(NewDollar(in))
+	result = NewDollar(5).Equals(NewDollar(6))
 
-	if expected != result {
-		t.Errorf("Dollar(%v)#Equals(%v) = %v, want %v", 5, in, result, expected)
+	if result {
+		t.Errorf("Dollar(%v)#Equals(%v) = %v, want %v", 5, 6, result, false)
 	}
 
-	in = 5
-	expected = true
-	var resultFranc = five.Equals(NewFranc(in))
+	result = NewFranc(5).Equals(NewFranc(5))
 
-	if expected != resultFranc {
-		t.Errorf("Franc(%v)#Equals(%v) = %v, want %v", 5, in, resultFranc, expected)
+	if !result {
+		t.Errorf("Franc(%v)#Equals(%v) = %v, want %v", 5, 5, result, true)
 	}
 
-	in = 6
-	expected = false
-	resultFranc = five.Equals(NewFranc(in))
+	result = NewFranc(5).Equals(NewFranc(6))
 
-	if expected != resultFranc {
-		t.Errorf("Franc(%v)#Equals(%v) = %v, want %v", 5, in, resultFranc, expected)
+	if result {
+		t.Errorf("Franc(%v)#Equals(%v) = %v, want %v", 5, 6, result, false)
+	}
+
+	result = NewFranc(5).Equals(NewDollar(5))
+
+	if result {
+		t.Errorf("Franc(%v)#Equals(Dollar(%v)) = %v, want %v", 5, 5, result, false)
 	}
 }
 
